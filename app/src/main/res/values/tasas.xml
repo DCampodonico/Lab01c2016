@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tasa_de_0_a_5000_menor_30_dias">25</string>
+    <string name="tasa_de_0_a_5000_mayor_30_dias">27.5</string>
+    <string name="tasa_de_5000_a_99999_menor_30_dias">30</string>
+    <string name="tasa_de_5000_a_99999_mayor_30_dias">32.3</string>
+    <string name="tasa_de_mas_de_99999_menor_30_dias">35</string>
+    <string name="tasa_de_mas_de_99999_mayor_30_dias">38.5</string>
+</resources>
