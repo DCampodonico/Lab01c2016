@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:ems="10"
-            android:id="@+id/editText" />
+            android:id="@+id/editText_correo" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editText2" />
+            android:id="@+id/editText_cuit" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:ems="10"
-            android:id="@+id/editText3" />
+            android:id="@+id/editText_importe" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -75,7 +75,8 @@
         <SeekBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/seekBar" />
+            android:id="@+id/seekBar"
+            android:max="99" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -89,7 +90,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Small Text"
+            android:text="@string/rendimiento"
             android:id="@+id/textView4" />
 
         <TextView
@@ -97,19 +98,21 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Large Text"
-            android:id="@+id/textView9" />
+            android:id="@+id/textView_rendimiento" />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New CheckBox"
-            android:id="@+id/checkBox" />
+            android:text="@string/chkbox_renovar"
+            android:id="@+id/checkBox"
+            android:checked="true" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Button"
-            android:id="@+id/button" />
+            android:text="@string/btn_plazo_fijo"
+            android:id="@+id/button_plazo_fijo"
+            android:onClick="hacerPlazoFijo" />
 
         <TextView
             android:layout_width="wrap_content"
