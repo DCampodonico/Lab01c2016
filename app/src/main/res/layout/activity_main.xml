@@ -82,8 +82,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Small Text"
-            android:id="@+id/textView7"
+            android:text=""
+            android:id="@+id/textView_dias"
             android:layout_gravity="center_horizontal" />
 
         <TextView
@@ -91,20 +91,21 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="@string/rendimiento"
-            android:id="@+id/textView4" />
+            android:id="@+id/textView_rendimiento"
+            />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
-            android:id="@+id/textView_rendimiento" />
+            android:text="$ 0"
+            android:id="@+id/textView_resultado" />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/chkbox_renovar"
-            android:id="@+id/checkBox"
+            android:id="@+id/chk_renovacion"
             android:checked="true" />
 
         <Button
@@ -112,14 +113,15 @@
             android:layout_height="wrap_content"
             android:text="@string/btn_plazo_fijo"
             android:id="@+id/button_plazo_fijo"
-            android:onClick="hacerPlazoFijo" />
+            android:includeFontPadding="true"
+            />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
-            android:id="@+id/textView5" />
+            android:text=""
+            android:id="@+id/textView_mensajeFinal" />
 
     </LinearLayout>
 </RelativeLayout>
