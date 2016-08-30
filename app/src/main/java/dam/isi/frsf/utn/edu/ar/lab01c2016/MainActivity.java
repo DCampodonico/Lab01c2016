@@ -20,6 +20,7 @@ package dam.isi.frsf.utn.edu.ar.lab01c2016;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -29,13 +30,11 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, SeekBar.OnSeekBarChangeListener {
 
-    private EditText importe;
+    private EditText importe, correo, cuit;
     private SeekBar barraDias;
-    private TextView rendimiento;
     private CheckBox chk_renovacion;
     private Button btn_plazo_fijo;
-    private TextView mensajeFinal;
-    private TextView dias;
+    private TextView mensajeFinal, dias, rendimiento;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +56,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void setParametros() {
         importe = (EditText)findViewById(R.id.editText_importe);
+        correo = (EditText)findViewById(R.id.editText_correo);
+        cuit = (EditText)findViewById(R.id.editText_cuit);
         barraDias = (SeekBar)findViewById(R.id.seekBar);
         rendimiento = (TextView)findViewById(R.id.textView_resultado);
         btn_plazo_fijo = (Button)findViewById(R.id.button_plazo_fijo);
@@ -65,8 +66,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         dias = (TextView)findViewById(R.id.textView_dias);
     }
 
-    public boolean validarCampos() {
-        return true;
+    private boolean validarCampos() {
+        boolean ret = true;
+        if (TextUtils.isEmpty(correo.getText())) {
+            ret &= false;
+        } else {
+            ret &= android.util.Patterns.EMAIL_ADDRESS.matcher(correo.getText()).matches();
+        }
+        return ret;
     }
 
     private void hacerPlazoFijo(){
@@ -83,7 +90,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private double calcularResultado(){
         double I, M, i, n;
-        M = Double.parseDouble(importe.getText().toString());
+        try {
+            M = Double.parseDouble(importe.getText().toString());
+        } catch(Exception e){
+            M = 0;
+        }
         n = barraDias.getProgress();
         if(M<5000 && n<30)
             i = Double.parseDouble(getResources().getString(R.string.tasa_de_0_a_5000_menor_30_dias));
