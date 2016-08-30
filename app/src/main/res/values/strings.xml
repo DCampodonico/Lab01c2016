@@ -29,4 +29,7 @@
     <string name="chkbox_renovar">Renovar Automáticamente al Vencimiento</string>
     <string name="msg_exito_plazo_fijo">Plazo fijo realizado. Recibirá $%.3f al vencimiento!</string>
     <string name="msg_error">Ha ocurrido un error!</string>
+    <string name="msg_error_correo">El correo ingresado es inválido!</string>
+    <string name="msg_error_cuit">El CUIT ingresado es inválido!</string>
+    <string name="msg_error_importe">El importe ingresado es inválido!</string>
 </resources>

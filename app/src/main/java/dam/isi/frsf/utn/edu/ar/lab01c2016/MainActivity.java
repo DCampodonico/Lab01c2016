@@ -21,6 +21,7 @@ package dam.isi.frsf.utn.edu.ar.lab01c2016;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -68,13 +69,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private boolean validarCampos() {
         boolean ret = true;
-        if (TextUtils.isEmpty(correo.getText())) {
-            ret &= false;
-        } else {
-            ret &= android.util.Patterns.EMAIL_ADDRESS.matcher(correo.getText()).matches();
+        String error = "";
+        if(!validarEmail(correo.getText())){
+            error += getResources().getString(R.string.msg_error_correo) + "\n";
+            ret = false;
         }
-        ret &= cuit.getText().toString().length() == 11;
+        if(!validarCuit(cuit.getText())) {
+            error += getResources().getString(R.string.msg_error_cuit) + "\n";
+            ret = false;
+        }
+        if(!validarImporte(cuit.getText())) {
+            error += getResources().getString(R.string.msg_error_importe) + "\n";
+            ret = false;
+        }
+        mensajeFinal.setTextColor(getResources().getColor(R.color.mensaje_error));
+        mensajeFinal.setText(error);
         return ret;
+    }
+
+    private boolean validarEmail(CharSequence s) {
+        return  !TextUtils.isEmpty(s) && Patterns.EMAIL_ADDRESS.matcher(s).matches();
+    }
+    private boolean validarCuit(CharSequence s){
+        return s.toString().matches("[0-9]{11}");
+    }
+    private boolean validarImporte(CharSequence s){
+        try {
+            Double.parseDouble(importe.getText().toString());
+        } catch(Exception e){
+            return false;
+        }
+        return true;
     }
 
     private void hacerPlazoFijo(){
@@ -84,8 +109,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             s = String.format(s, calcularResultado());
             mensajeFinal.setText(s);
         } else {
-            mensajeFinal.setTextColor(getResources().getColor(R.color.mensaje_error));
-            mensajeFinal.setText(getResources().getString(R.string.msg_error));
+            return;
         }
     }
 
