@@ -63,12 +63,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void hacerPlazoFijo(){
         if (validarCampos()) {
-            rendimiento.setText("$ " + calcularResultado());
-            mensajeFinal.setText("Se ha realizado correctamente el plazo fijo !");
+            //rendimiento.setText("$ " + Double.toString(calcularResultado()));
             mensajeFinal.setTextColor(getResources().getColor(R.color.mensaje_correcto));
+            String s = getResources().getString(R.string.msg_exito_plazo_fijo).toString();
+            s = String.format(s, calcularResultado());
+            mensajeFinal.setText(s);
         } else {
-            mensajeFinal.setText("No se ha realizado correctamente el plazo fijo !");
             mensajeFinal.setTextColor(getResources().getColor(R.color.mensaje_error));
+            mensajeFinal.setText(getResources().getString(R.string.msg_error));
         }
     }
 
@@ -77,15 +79,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void onClick(View b) {
-        if(btn_plazo_fijo.getId()==b.getId())
+        if(btn_plazo_fijo.getId() == b.getId())
             hacerPlazoFijo();
     }
 
     public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
         if(i == 1)
-            dias.setText(i + " Día");
+            dias.setText(Integer.toString(i) + " Día");
         else
-            dias.setText(i + " Días");
+            dias.setText(Integer.toString(i) + " Días");
+        calcularResultado();
     }
 
     public void onStartTrackingTouch(SeekBar seekBar) {}
