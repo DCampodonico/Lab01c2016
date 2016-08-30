@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             ret &= android.util.Patterns.EMAIL_ADDRESS.matcher(correo.getText()).matches();
         }
+        ret &= cuit.getText().toString().length() == 11;
         return ret;
     }
 
