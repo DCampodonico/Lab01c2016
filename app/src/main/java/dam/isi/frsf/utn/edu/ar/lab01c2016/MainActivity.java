@@ -18,13 +18,8 @@
 
 package dam.isi.frsf.utn.edu.ar.lab01c2016;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.net.Uri;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -32,17 +27,15 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, SeekBar.OnSeekBarChangeListener {
 
-    EditText importe;
-    SeekBar barraDias;
-    TextView rendimiento;
-    CheckBox chk_renovacion;
-    Button btn_plazo_fijo;
-    TextView mensajeFinal;
-    TextView dias;
+    private EditText importe;
+    private SeekBar barraDias;
+    private TextView rendimiento;
+    private CheckBox chk_renovacion;
+    private Button btn_plazo_fijo;
+    private TextView mensajeFinal;
+    private TextView dias;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return true;
     }
 
-    public void hacerPlazoFijo(){
+    private void hacerPlazoFijo(){
         if (validarCampos()) {
             rendimiento.setText("$ " + calcularResultado());
             mensajeFinal.setText("Se ha realizado correctamente el plazo fijo !");
