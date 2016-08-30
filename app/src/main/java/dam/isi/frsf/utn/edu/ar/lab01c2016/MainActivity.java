@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         setParametros();
         btn_plazo_fijo.setOnClickListener(this);
-        importe.addTextChangedListener(new Te);
+        importe.setOnFocusChangeListener((View.OnFocusChangeListener) this);
         barraDias.setOnSeekBarChangeListener(this);
         barraDias.setProgress(30);
     }
@@ -95,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return I;
     }
 
+    @Override
     public void onClick(View b) {
         if(btn_plazo_fijo.getId() == b.getId())
             hacerPlazoFijo();
