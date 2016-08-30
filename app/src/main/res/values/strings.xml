@@ -27,6 +27,6 @@
     <string name="rendimiento">Rendimiento</string>
     <string name="btn_plazo_fijo">HACER PLAZO FIJO</string>
     <string name="chkbox_renovar">Renovar Automáticamente al Vencimiento</string>
-    <string name="msg_exito_plazo_fijo">Plazo fijo realizado. Recibirá %d al vencimiento!</string>
+    <string name="msg_exito_plazo_fijo">Plazo fijo realizado. Recibirá $%.3f al vencimiento!</string>
     <string name="msg_error">Ha ocurrido un error!</string>
 </resources>

@@ -87,7 +87,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/Cant_dias_inversion"
+            android:text="@string/cant_dias_inversion"
             android:id="@+id/textView3" />
 
         <SeekBar
@@ -117,7 +117,9 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="$ 0"
-            android:id="@+id/textView_resultado" />
+            android:id="@+id/textView_resultado"
+            android:digits="3"
+            android:numeric="decimal" />
 
         <CheckBox
             android:layout_width="wrap_content"

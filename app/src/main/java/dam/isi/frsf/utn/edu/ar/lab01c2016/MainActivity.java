@@ -42,10 +42,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setParametros();
+        importe.setText("0");
         btn_plazo_fijo.setOnClickListener(this);
-        importe.setOnFocusChangeListener((View.OnFocusChangeListener) this);
-        barraDias.setOnSeekBarChangeListener(this);
         barraDias.setProgress(30);
+        barraDias.setOnSeekBarChangeListener(this);
+        importe.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                importeCambiado();
+            }
+        });
+
     }
 
     private void setParametros() {
@@ -77,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private double calcularResultado(){
         double I, M, i, n;
         M = Double.parseDouble(importe.getText().toString());
-        n = Integer.parseInt(dias.getText().toString());
+        n = barraDias.getProgress();
         if(M<5000 && n<30)
             i = Double.parseDouble(getResources().getString(R.string.tasa_de_0_a_5000_menor_30_dias));
         else if(M<5000 && n>=30)
@@ -90,9 +97,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             i= Double.parseDouble(getResources().getString(R.string.tasa_de_mas_de_99999_menor_30_dias));
         else
             i= Double.parseDouble(getResources().getString(R.string.tasa_de_mas_de_99999_mayor_30_dias));
-        I = M * (Math.pow(1+i/100, n/360.0) - 1);
-        rendimiento.setText("$" + Double.toString(I));
+        I = M * (Math.pow(1 + (i/100.0), (n/360.0)) - 1);
+        rendimiento.setText("$" + String.format("%.3f", I));
         return I;
+    }
+
+    public void importeCambiado(){
+        calcularResultado();
     }
 
     @Override
@@ -102,10 +113,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void onFocusChange(View view,  boolean hasFocus){
-        calcularResultado();
-    }
-
     public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
         if(i == 1)
             dias.setText(Integer.toString(i) + " Día");
@@ -114,7 +121,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         calcularResultado();
     }
 
+    @Override
     public void onStartTrackingTouch(SeekBar seekBar) {}
 
+    @Override
     public void onStopTrackingTouch(SeekBar seekBar) {}
 }
