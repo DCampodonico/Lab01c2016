@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         setParametros();
         btn_plazo_fijo.setOnClickListener(this);
+        importe.addTextChangedListener(new Te);
         barraDias.setOnSeekBarChangeListener(this);
         barraDias.setProgress(30);
     }
@@ -63,7 +64,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void hacerPlazoFijo(){
         if (validarCampos()) {
-            //rendimiento.setText("$ " + Double.toString(calcularResultado()));
             mensajeFinal.setTextColor(getResources().getColor(R.color.mensaje_correcto));
             String s = getResources().getString(R.string.msg_exito_plazo_fijo).toString();
             s = String.format(s, calcularResultado());
@@ -75,12 +75,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private double calcularResultado(){
-        return 0.0;
+        double I, M, i, n;
+        M = Double.parseDouble(importe.getText().toString());
+        n = Integer.parseInt(dias.getText().toString());
+        if(M<5000 && n<30)
+            i = Double.parseDouble(getResources().getString(R.string.tasa_de_0_a_5000_menor_30_dias));
+        else if(M<5000 && n>=30)
+            i= Double.parseDouble(getResources().getString(R.string.tasa_de_0_a_5000_mayor_30_dias));
+        else if(M<99999 && n<30)
+            i= Double.parseDouble(getResources().getString(R.string.tasa_de_5000_a_99999_menor_30_dias));
+        else if(M<99999 && n>=30)
+            i= Double.parseDouble(getResources().getString(R.string.tasa_de_5000_a_99999_mayor_30_dias));
+        else if(n<30)
+            i= Double.parseDouble(getResources().getString(R.string.tasa_de_mas_de_99999_menor_30_dias));
+        else
+            i= Double.parseDouble(getResources().getString(R.string.tasa_de_mas_de_99999_mayor_30_dias));
+        I = M * (Math.pow(1+i/100, n/360.0) - 1);
+        rendimiento.setText("$" + Double.toString(I));
+        return I;
     }
 
     public void onClick(View b) {
         if(btn_plazo_fijo.getId() == b.getId())
             hacerPlazoFijo();
+    }
+
+    @Override
+    public void onFocusChange(View view,  boolean hasFocus){
+        calcularResultado();
     }
 
     public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
