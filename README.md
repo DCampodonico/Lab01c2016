@@ -2,7 +2,7 @@
 
 Aplicación Android para calcular el rendimiento de una inversión a plazo fijo con distintas tasas de interes según el monto y cantidad de días de la inversión.
 
-![](http://i65.tinypic.com/k0mwx5.jpg)
+![](img/Screenshot_2016-08-31-02-43-38.png)
 
 #Credits
 Daniel Campodonico  
