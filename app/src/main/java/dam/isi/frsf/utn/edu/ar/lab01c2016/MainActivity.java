@@ -44,8 +44,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setParametros();
         importe.setText("0");
         btn_plazo_fijo.setOnClickListener(this);
-        barraDias.setProgress(30);
         barraDias.setOnSeekBarChangeListener(this);
+        barraDias.setProgress(30);
         importe.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
