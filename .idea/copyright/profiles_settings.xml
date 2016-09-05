@@ -1,7 +1,3 @@
 <component name="CopyrightManager">
-  <settings default="GPLv3 Lab01c2016">
-    <module2copyright>
-      <element module="Production" copyright="GPLv3 Lab01c2016" />
-    </module2copyright>
-  </settings>
+  <settings default="" />
 </component>
