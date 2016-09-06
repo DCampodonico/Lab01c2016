@@ -32,4 +32,6 @@
     <string name="msg_error_correo">El correo ingresado es inválido!</string>
     <string name="msg_error_cuit">El CUIT ingresado es inválido!</string>
     <string name="msg_error_importe">El importe ingresado es inválido!</string>
+    <string name="dia">día</string>
+    <string name="dias">días</string>
 </resources>

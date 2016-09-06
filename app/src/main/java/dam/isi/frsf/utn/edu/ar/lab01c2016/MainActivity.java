@@ -43,10 +43,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setParametros();
-        importe.setText("0");
         btn_plazo_fijo.setOnClickListener(this);
         barraDias.setOnSeekBarChangeListener(this);
         importe.setOnFocusChangeListener(this);
+        importe.setText("0");
         barraDias.setProgress(30);
     }
 
@@ -169,11 +169,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
         if(barraDias.getId() == seekBar.getId()) {
-            String textoDias = i + "";
+            String textoDias = i + " ";
             if (i == 1) {
-                textoDias += " Día";
+                textoDias += getResources().getString(R.string.dia);
             } else {
-                textoDias += " Días";
+                textoDias += getResources().getString(R.string.dias);
             }
             dias.setText(textoDias);
 
