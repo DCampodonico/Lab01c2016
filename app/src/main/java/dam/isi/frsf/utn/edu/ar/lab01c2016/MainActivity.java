@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private boolean validarEmail(String s) {
-        return  !TextUtils.isEmpty(s) && Patterns.EMAIL_ADDRESS.matcher(s).matches();
+        return !TextUtils.isEmpty(s) && Patterns.EMAIL_ADDRESS.matcher(s).matches();
     }
 
     private boolean validarCuit(String s){
